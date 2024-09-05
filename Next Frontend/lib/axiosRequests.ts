@@ -1,7 +1,6 @@
 import { blog } from "@/app/page";
 import axios from "axios"
-
-const API_URL = "https://consumableai-blogproject.onrender.com";
+const API_URL = 'http://localhost:3000';
 
 export async function getBlogs (){
     const response= await axios.get(`${API_URL}/posts`);
