@@ -2,7 +2,6 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
-import { Alert, AlertDescription, AlertTitle} from "@/components/ui/alert"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -16,9 +15,8 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { getBlog, postBlog, updateBlog } from "@/lib/axiosRequests"
-import { redirect, usePathname } from 'next/navigation';
-import Link from "next/link"
+import { getBlog, updateBlog } from "@/lib/axiosRequests"
+import { usePathname } from 'next/navigation';
 import { useEffect, useState } from "react"
 import { blog } from "@/app/page"
 

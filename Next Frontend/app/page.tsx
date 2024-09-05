@@ -1,7 +1,7 @@
+
 "use client"
 
 import {BlogCard} from "@/components/ui/blogCard"
-import { Button } from "@/components/ui/button"
 import {getBlogs} from "@/lib/axiosRequests";
 import Link from "next/link";
 
@@ -26,12 +26,15 @@ export default function Home() {
   useEffect(()=>{
     getb();
   },[])
+
+
   return (
 
     <div className="flex">
       <div className="p-10">
         {blogs.map(blog=>
-        <div className="mt-3">
+        
+        <div key={`${blog.id}`} className="mt-3">
             <Link href={`/blog/${blog.id}`}>
               <BlogCard title={blog.title} content={blog.content}></BlogCard>
             </Link>

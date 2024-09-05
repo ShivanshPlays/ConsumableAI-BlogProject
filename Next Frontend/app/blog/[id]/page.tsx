@@ -1,7 +1,8 @@
+
 "use client"
 
+
 import { blog } from "@/app/page"
-import { BlogCard } from "@/components/ui/blogCard";
 import { FullBlogCard } from "@/components/ui/fullBlogCard";
 import { getBlog } from "@/lib/axiosRequests";
 import { usePathname } from "next/navigation";
@@ -21,7 +22,7 @@ export default function Blog(){
 
     async function populateBlog(){
         const resp=await getBlog(id);
-        console.log(resp.response);
+        // console.log(resp.response);
         setblog(resp.response);
     }
     useEffect(()=>{
@@ -29,7 +30,8 @@ export default function Blog(){
     },[])
 
     return <div  className="h-screen">
-        <FullBlogCard title={blog.title} content={blog.content} id={id}> </FullBlogCard>
+        
+        <FullBlogCard title={blog.title} content={blog.content} id={id}/>
     </div>
     // return 
 }

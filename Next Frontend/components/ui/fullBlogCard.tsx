@@ -1,5 +1,5 @@
 import { blog } from "@/app/page"
-import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card"
+import {Card, CardContent, CardFooter, CardHeader, CardTitle} from "@/components/ui/card"
 import { Button } from "./button"
 import { deleteBlog } from "@/lib/axiosRequests"
 import Link from "next/link"
