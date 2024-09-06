@@ -20,12 +20,11 @@ import {
 
 
 export const FullBlogCard= ({title,content,id}:blog)=>{
-    return <Card className="h-5/6 mx-10 mt-10">
+    return <Card className="h-5/6 mx-10 mt-10 bg-[#e2e8f0]">
     <CardHeader>
-      <CardTitle className="text-5xl">{title}</CardTitle>
-      {/* <CardDescription>Card Description</CardDescription> */}
+      <CardTitle className="text-5xl w-3/4">{title}</CardTitle>
     </CardHeader>
-    <CardContent>
+    <CardContent className="text-xl mb-20">
       <p>{content}</p>
     </CardContent>
     <CardFooter className="flex-row-reverse">

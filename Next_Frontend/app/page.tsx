@@ -1,51 +1,28 @@
-
-"use client"
-
-import {BlogCard} from "@/components/ui/blogCard"
-import {getBlogs} from "@/lib/axiosRequests";
+import { BlogCard } from "@/components/ui/blogCard";
+import { getBlogs } from "@/lib/axiosRequests";
 import Link from "next/link";
 
-import { useEffect, useState } from "react"
-
 export interface blog {
-  id?:string,
-  title:string,
-  content:string
+  id?: string;
+  title: string;
+  content: string;
 }
 
-export default function Home() {
-
-  
-  const [blogs,setblogs] =useState<blog[]>([]);
-
-  async function getb() {
-    const resp=await getBlogs();
-    // console.log(resp.response);
-    setblogs(resp.response);
-  }
-  useEffect(()=>{
-    getb();
-  },[])
-
+//using a nextJS asynchronous component.
+export default async function Home() {
+  const blogs: blog[] = await getBlogs();
 
   return (
-
     <div className="flex">
-      <div className="p-10">
-        {blogs.map(blog=>
-        
-        <div key={`${blog.id}`} className="mt-3">
+      <div className="p-10 w-screen">
+        {blogs.map((blog) => (
+          <div key={`${blog.id}`} className="mt-4 w-full">
             <Link href={`/blog/${blog.id}`}>
               <BlogCard title={blog.title} content={blog.content}></BlogCard>
             </Link>
-        </div>
-        
-          
-        )}
+          </div>
+        ))}
       </div>
-      
-     
-      
     </div>
-  )
+  );
 }

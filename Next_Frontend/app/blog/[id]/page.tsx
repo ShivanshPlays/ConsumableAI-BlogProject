@@ -23,7 +23,7 @@ export default function Blog(){
     async function populateBlog(){
         const resp=await getBlog(id);
         // console.log(resp.response);
-        setblog(resp.response);
+        setblog(resp);
     }
     useEffect(()=>{
         populateBlog();

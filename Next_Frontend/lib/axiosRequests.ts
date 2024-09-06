@@ -1,17 +1,28 @@
+
 import { blog } from "@/app/page";
-import axios from "axios"
-const API_URL = 'https://consumableai-blogproject.onrender.com';
+import axios, { AxiosError } from "axios"
+const API_URL = process.env.NEXT_PUBLIC_backend_url;
 
 export async function getBlogs (){
     const response= await axios.get(`${API_URL}/posts`);
     if (!response) throw new Error('Network response was not ok');
-    return response.data;
+    return response.data.response;
 }
 
 export async function getBlog (id:string){
-    const response= await axios.get(`${API_URL}/posts/${id}`);
-    if (!response) throw new Error('Network response was not ok');
-    return response.data;
+
+    try{
+        const response= await axios.get(`${API_URL}/posts/${id}`);
+        return response.data.response;
+    }catch(err){
+
+        const errors = err as Error | AxiosError;
+        if(!axios.isAxiosError(errors)){
+            console.log(errors.message);
+        }
+        console.log(errors.message);
+    }
+    
 }
 
 export async function postBlog ({title,content}:blog){
@@ -42,4 +53,3 @@ export async function updateBlog ({title,content}:blog,id:string){
     if (!response) throw new Error('Network response was not ok');
     return response.data;
 }
-
